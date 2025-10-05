@@ -3,12 +3,20 @@
 建玉ヒサメ<br>
 働く紳士→2026年夏コミ参加<br>
 <img src="post.png" alt="表紙" width="300">
-<audio id="bgm" preload="auto">
+<audio id="bgm" controls>
   <source src="maou_14_shining_star.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-  document.addEventListener('click', function () {
-    document.getElementById('bgm').play();
+  window.addEventListener('load', function () {
+    const audio = document.getElementById('bgm');
+    const playPromise = audio.play();
+
+    if (playPromise !== undefined) {
+      playPromise.catch(function (error) {
+        // 自動再生がブロックされた場合は何もしない
+        console.log("自動再生がブロックされました");
+      });
+    }
   });
 </script>

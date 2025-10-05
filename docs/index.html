@@ -5,14 +5,17 @@
 <img src="post.png" alt="表紙" width="300">
 <audio id="bgm" controls>
   <source src="maou_14_shining_star.mp3" type="audio/mpeg">
+  お使いのブラウザは audio タグをサポートしていません。
 </audio>
 
 <script>
   function tryPlay() {
     const audio = document.getElementById('bgm');
-    audio.play().catch(() => {
-      console.log("自動再生がブロックされました");
-    });
+    if (audio.paused) {
+      audio.play().catch(() => {
+        console.log("自動再生がブロックされました");
+      });
+    }
   }
 
   window.addEventListener('load', tryPlay);

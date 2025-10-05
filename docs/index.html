@@ -19,6 +19,6 @@
   }
 
   window.addEventListener('load', tryPlay);
-  document.addEventListener('click', tryPlay);       // PC対応
-  document.addEventListener('touchstart', tryPlay);  // スマホ対応
+ document.addEventListener('click', tryPlay, { once: true });
+document.addEventListener('touchstart', tryPlay, { once: true });
 </script>

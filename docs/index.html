@@ -8,15 +8,14 @@
 </audio>
 
 <script>
-  window.addEventListener('load', function () {
+  function tryPlay() {
     const audio = document.getElementById('bgm');
-    const playPromise = audio.play();
+    audio.play().catch(() => {
+      console.log("自動再生がブロックされました");
+    });
+  }
 
-    if (playPromise !== undefined) {
-      playPromise.catch(function (error) {
-        // 自動再生がブロックされた場合は何もしない
-        console.log("自動再生がブロックされました");
-      });
-    }
-  });
+  window.addEventListener('load', tryPlay);
+  document.addEventListener('click', tryPlay);       // PC対応
+  document.addEventListener('touchstart', tryPlay);  // スマホ対応
 </script>
